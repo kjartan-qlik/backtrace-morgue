@@ -5119,6 +5119,12 @@ function coronerLogin(argv, config, cb) {
     });
   }
 
+  if (argv.username && argv.password) {
+    return coroner.login(argv.username, argv.password, function(err) {
+      loginComplete(coroner, argv, err, cb);
+    });
+  }
+
   promptLib.get([{
       name: 'username',
       message: 'User',
